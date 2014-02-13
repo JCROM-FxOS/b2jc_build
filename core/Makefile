@@ -1253,7 +1253,9 @@ ifeq ($(TARGET_BUILD_TYPE),debug)
 endif
 name := $(name)-ota-$(FILE_NAME_TAG)
 
-INTERNAL_OTA_PACKAGE_TARGET := $(PRODUCT_OUT)/$(name).zip
+include $(TOPDIR)jcrom/common/version.mk
+jc_name := $(JCROM_VERSION)_$(TARGET_DEVICE)
+INTERNAL_OTA_PACKAGE_TARGET := $(PRODUCT_OUT)/$(jc_name).zip
 
 $(INTERNAL_OTA_PACKAGE_TARGET): KEY_CERT_PAIR := $(DEFAULT_KEY_CERT_PAIR)
 
