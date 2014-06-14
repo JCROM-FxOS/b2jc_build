@@ -1120,8 +1120,11 @@ DISTTOOLS :=  $(HOST_OUT_EXECUTABLES)/minigzip \
 	  $(HOST_OUT_EXECUTABLES)/mkuserimg.sh \
 	  $(HOST_OUT_EXECUTABLES)/make_ext4fs \
 	  $(HOST_OUT_EXECUTABLES)/simg2img \
-	  $(HOST_OUT_EXECUTABLES)/e2fsck \
-	  $(HOST_OUT_EXECUTABLES)/mkfs_ubifs
+	  $(HOST_OUT_EXECUTABLES)/e2fsck
+
+ifeq ($(TARGET_USERIMAGES_USE_UBIFS),true)
+DISTTOOLS += $(HOST_OUT_EXECUTABLES)/mkfs_ubifs
+endif
 
 OTATOOLS := $(DISTTOOLS) \
 	  $(HOST_OUT_EXECUTABLES)/aapt
