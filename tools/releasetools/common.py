@@ -304,6 +304,11 @@ def BuildBootableImage(sourcedir, fs_config_file, info_dict=None):
     cmd.append("--pagesize")
     cmd.append(open(fn).read().rstrip("\n"))
 
+  fn = os.path.join(sourcedir, "dtb")
+  if os.access(fn, os.F_OK):
+    cmd.append("--dt")
+    cmd.append(open(fn).read().rstrip("\n"))
+
   args = info_dict.get("mkbootimg_args", None)
   if args and args.strip():
     cmd.extend(args.split())
